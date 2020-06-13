@@ -23,9 +23,9 @@ public class Demo {
     @Email
     private String email;
 
-    @NotEmpty(message = "Phone number is required")
+    @NotEmpty(message = "Mobile number is required")
     @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$",
-            message="Mobile number is invalid")
+            message="Mobile number pattern is required is invalid")
     private String moNumber;
 
     @Past(message = "dob should be past")
