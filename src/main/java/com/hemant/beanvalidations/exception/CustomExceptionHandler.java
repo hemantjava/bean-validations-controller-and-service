@@ -24,15 +24,14 @@ public class CustomExceptionHandler
         return new ResponseEntity<ErrorResponse>(error, HttpStatus.LENGTH_REQUIRED);
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
+    public ResponseEntity<Map<String, String>> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getFieldErrors().forEach(error ->
                 errors.put(error.getField(), error.getDefaultMessage()));
 
-        return errors;
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
     @ExceptionHandler(Exception.class) //Global exception handling
     public final ResponseEntity<ErrorResponse> handleUnAuthenticException(Exception ex)
