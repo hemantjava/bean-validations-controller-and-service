@@ -13,6 +13,6 @@ public class DemoController {
     @PostMapping("/validate")
     public ResponseEntity<Object> getData(@RequestBody @Valid Demo demo){
 
-        return new ResponseEntity(demo,HttpStatus.OK);
+        return new ResponseEntity<>(demo,HttpStatus.OK);
     }
 }
