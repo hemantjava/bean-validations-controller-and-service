@@ -23,7 +23,7 @@ public class ValidationExample {
                 .age(17)
                 .working(true)
                 .moNumber("909881653")
-                .dob(LocalDate.of(2000,06,22))
+                .dob(LocalDate.of(2000, 6,22))
                 .email("hemant@gmail.com")
                 .name("Hemant")
                 .id(1212)
@@ -33,9 +33,7 @@ public class ValidationExample {
             log.error(violation.getPropertyPath().toString()+"="+violation.getMessage());
         }
         final Map<String, String> violationsMap = new LinkedHashMap<>();
-        violations.forEach(error->{
-            violationsMap.put(error.getPropertyPath().toString(),error.getMessage());
-        });
+        violations.forEach(error-> violationsMap.put(error.getPropertyPath().toString(),error.getMessage()));
 
         System.out.println(violationsMap);
     }
